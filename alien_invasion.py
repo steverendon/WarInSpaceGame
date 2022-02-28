@@ -1,15 +1,19 @@
 import sys
 import pygame
 
+from config import Config
+
 def run_game():
 
-    # Initialize the game and create a screem object
+    # Initialize the game, the configurations and create a screem object
     pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Invasion alienigena")
 
-    # Set background color
-    bg_color = (230, 230, 230)
+    game_configurations = Config()
+
+    screen = pygame.display.set_mode(
+        (game_configurations.screen_width, game_configurations.screen_height))
+
+    pygame.display.set_caption("Invasion alienigena")
 
     # Initialize the game main bucle
     while True:
@@ -20,7 +24,7 @@ def run_game():
                 sys.exit()
 
         # It draw screen for each bucle again
-        screen.fill(bg_color)
+        screen.fill(game_configurations.bg_color)
 
         # Making visible the latest screen
         pygame.display.flip()
