@@ -1,7 +1,8 @@
-import sys
 import pygame
 
 from config import Config
+from ship import Ship
+import game_functions as gf
 
 def run_game():
 
@@ -15,18 +16,15 @@ def run_game():
 
     pygame.display.set_caption("Invasion alienigena")
 
+    # It create a ship
+    ship = Ship(screen)
+
     # Initialize the game main bucle
     while True:
 
         # Listening keyboard or mouse events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.verify_events()
 
-        # It draw screen for each bucle again
-        screen.fill(game_configurations.bg_color)
-
-        # Making visible the latest screen
-        pygame.display.flip()
+        gf.update_screen(game_configurations, screen, ship)
 
 run_game()
